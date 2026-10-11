@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#f8fafc" />
+
+    <meta
+      name="description"
+      content="HireHub - Find jobs, discover opportunities, and connect with employers."
+    />
+
+    <title>HireHub | Job Portal</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f8fafc;
+      }
+
+      #initial-loader {
+        min-height: 100vh;
+        padding: 24px;
+        background: #f8fafc;
+      }
+
+      .loader-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 0 24px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .loader-logo {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: #2563eb;
+        color: white;
+        font-size: 23px;
+        font-weight: 700;
+      }
+
+      .loader-brand {
+        height: 22px;
+        width: 112px;
+        border-radius: 6px;
+      }
+
+      .loader-content {
+        width: 100%;
+        max-width: 1100px;
+        margin: 48px auto;
+      }
+
+      .shimmer {
+        position: relative;
+        overflow: hidden;
+        background: #e9eef5;
+        border-radius: 10px;
+      }
+
+      .shimmer::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        transform: translateX(-100%);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.8),
+          transparent
+        );
+        animation: shimmer 1.4s infinite;
+      }
+
+      .loader-title {
+        width: 260px;
+        max-width: 80%;
+        height: 32px;
+        margin-bottom: 14px;
+      }
+
+      .loader-subtitle {
+        width: 360px;
+        max-width: 90%;
+        height: 16px;
+        margin-bottom: 32px;
+      }
+
+      .loader-panel {
+        padding: 24px;
+        margin-bottom: 24px;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 2px 5px rgba(15, 23, 42, 0.04);
+      }
+
+      .loader-search {
+        display: grid;
+        grid-template-columns: 1fr 1fr 110px;
+        gap: 14px;
+        margin-bottom: 32px;
+      }
+
+      .loader-input {
+        height: 48px;
+      }
+
+      .loader-button {
+        height: 48px;
+        background: #cbd5e1;
+      }
+
+      .loader-section-title {
+        width: 190px;
+        height: 22px;
+        margin-bottom: 20px;
+      }
+
+      .loader-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .loader-card {
+        min-height: 180px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        background: white;
+      }
+
+      .loader-card-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 18px;
+      }
+
+      .loader-line {
+        height: 14px;
+        margin-bottom: 12px;
+      }
+
+      .loader-line.short {
+        width: 55%;
+      }
+
+      .loader-line.medium {
+        width: 75%;
+      }
+
+      .loader-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        margin-top: 30px;
+        color: #64748b;
+        font-size: 14px;
+      }
+
+      .loader-spinner {
+        width: 17px;
+        height: 17px;
+        border: 2px solid #dbeafe;
+        border-top-color: #2563eb;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 700px) {
+        #initial-loader {
+          padding: 16px;
+        }
+
+        .loader-content {
+          margin-top: 30px;
+        }
+
+        .loader-search {
+          grid-template-columns: 1fr;
+        }
+
+        .loader-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .loader-panel {
+          padding: 16px;
+        }
+
+        .loader-card:nth-child(n + 2) {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .shimmer::after,
+        .loader-spinner {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="initial-loader" role="status" aria-label="Loading HireHub">
+      <header class="loader-header">
+        <div class="loader-logo">H</div>
+        <div class="loader-brand shimmer"></div>
+      </header>
+
+      <main class="loader-content">
+        <div class="loader-title shimmer"></div>
+        <div class="loader-subtitle shimmer"></div>
+
+        <section class="loader-panel">
+          <div class="loader-search">
+            <div class="loader-input shimmer"></div>
+            <div class="loader-input shimmer"></div>
+            <div class="loader-button shimmer"></div>
+          </div>
+
+          <div class="loader-section-title shimmer"></div>
+
+          <div class="loader-cards">
+            <article class="loader-card">
+              <div class="loader-card-icon shimmer"></div>
+              <div class="loader-line medium shimmer"></div>
+              <div class="loader-line shimmer"></div>
+              <div class="loader-line short shimmer"></div>
+            </article>
+
+            <article class="loader-card">
+              <div class="loader-card-icon shimmer"></div>
+              <div class="loader-line medium shimmer"></div>
+              <div class="loader-line shimmer"></div>
+              <div class="loader-line short shimmer"></div>
+            </article>
+
+            <article class="loader-card">
+              <div class="loader-card-icon shimmer"></div>
+              <div class="loader-line medium shimmer"></div>
+              <div class="loader-line shimmer"></div>
+              <div class="loader-line short shimmer"></div>
+            </article>
+          </div>
+
+          <div class="loader-status">
+            <span class="loader-spinner"></span>
+            <span>Preparing HireHub...</span>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      window.addEventListener("vite:preloadError", function () {
+        var loader = document.getElementById("initial-loader");
+        if (loader) {
+          loader.innerHTML =
+            '<p style="text-align:center;color:#64748b;padding-top:30vh;">Unable to load HireHub. Please refresh the page.</p>';
+        }
+      });
+    </script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
