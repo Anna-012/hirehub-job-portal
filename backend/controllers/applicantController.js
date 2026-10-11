@@ -5,9 +5,8 @@ import cloudinary from "../config/cloudinary.js";
 import path from "node:path";
 import axios from "axios";
 
-// ==========================================
 // GET APPLICANTS FOR A RECRUITER'S JOB
-// ==========================================
+
 export const getApplicantsForJob = async (req, res) => {
   try {
     const { jobId } = req.params;
@@ -76,9 +75,8 @@ export const getApplicantsForJob = async (req, res) => {
   }
 };
 
-// ==========================================
 // UPDATE APPLICATION STATUS
-// ==========================================
+
 export const updateApplicationStatus = async (req, res) => {
   try {
     const { applicationId } = req.params;
