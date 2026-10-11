@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  // baseURL: "http://localhost:5000/api",
+  baseURL: "https://hirehub-job-portal-hg4i.onrender.com/api",
 });
 
 // Automatically JWT token attach karega
