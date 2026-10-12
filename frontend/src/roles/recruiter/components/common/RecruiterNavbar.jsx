@@ -97,7 +97,7 @@ const RecruiterNavbar = () => {
   const handleLogout = async () => {
     if (logout) {
       await logout();
-      navigate("/login");
+      navigate("/");
     }
   };
 

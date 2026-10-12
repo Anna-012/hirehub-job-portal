@@ -22,7 +22,7 @@ const JobSeekerNavbar = () => {
       setLoggingOut(true);
       setIsProfileOpen(false);
       await logout();
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
       setLoggingOut(false);
