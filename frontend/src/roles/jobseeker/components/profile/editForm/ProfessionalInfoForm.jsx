@@ -1,9 +1,15 @@
+import { useState } from "react";
+
 const ProfessionalInfoForm = ({
   formData,
   setFormData,
   inputClass,
   textareaClass,
 }) => {
+  const [skillsInput, setSkillsInput] = useState(
+    (formData.skills || []).join(", "),
+  );
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -14,7 +20,13 @@ const ProfessionalInfoForm = ({
   };
 
   const handleSkillChange = (event) => {
-    const skills = event.target.value
+    const value = event.target.value;
+
+    // Preserve commas and spaces while typing
+    setSkillsInput(value);
+
+    // Update skills array for saving
+    const skills = value
       .split(",")
       .map((skill) => skill.trim())
       .filter(Boolean);
@@ -35,8 +47,9 @@ const ProfessionalInfoForm = ({
         <label className="block text-sm font-medium text-slate-700">
           Professional Headline
           <input
+            type="text"
             name="headline"
-            value={formData.headline}
+            value={formData.headline || ""}
             onChange={handleChange}
             placeholder="e.g. Frontend Developer"
             className={inputClass}
@@ -47,7 +60,7 @@ const ProfessionalInfoForm = ({
           About
           <textarea
             name="bio"
-            value={formData.bio}
+            value={formData.bio || ""}
             onChange={handleChange}
             placeholder="Tell employers about yourself..."
             className={textareaClass}
@@ -57,7 +70,9 @@ const ProfessionalInfoForm = ({
         <label className="block text-sm font-medium text-slate-700">
           Skills
           <input
-            value={formData.skills.join(", ")}
+            type="text"
+            name="skills"
+            value={skillsInput}
             onChange={handleSkillChange}
             placeholder="React, JavaScript, Node.js, MongoDB"
             className={inputClass}
